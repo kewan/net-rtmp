@@ -86,10 +86,11 @@ module Net
         tcp_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_RCVTIMEO, socket_timeout)
         tcp_socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_SNDTIMEO, socket_timeout)
 
-        context = OpenSSL::SSL::SSLContext.new
-        context.set_params(ssl_version: :SSLv3, verify_mode: OpenSSL::SSL::VERIFY_PEER)
+        # context = OpenSSL::SSL::SSLContext.new
+        # context.set_params(ssl_version: :SSLv3, verify_mode: OpenSSL::SSL::VERIFY_PEER)
 
-        OpenSSL::SSL::SSLSocket.new(tcp_socket, context).tap { |socket| socket.sync_close = true }
+        # OpenSSL::SSL::SSLSocket.new(tcp_socket, context).tap { |socket| socket.sync_close = true }
+        tcp_socket
       end
     end
 
